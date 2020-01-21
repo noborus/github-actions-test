@@ -5,6 +5,11 @@ BINARY_NAME := github-actions-test$(SUFFIX)
 DISTDIR=dist
 DISTARCH=github-actions-test_$(VERSION)_$(GOOS)_$(GOARCH)
 DISTOSDIR=$(DISTDIR)/$(DISTARCH)
+ifeq ($(GOOS),windows)
+  ZIP=7z a
+else
+  ZIP=zip
+endif
 
 build:
 	go build
@@ -30,5 +35,5 @@ dist:
 	cd $(DISTDIR) && \
 	cp ../LICENSE $(DISTARCH) && \
 	cp ../README.md $(DISTARCH) && \
-	zip -r $(DISTARCH).zip $(DISTARCH) && \
+	$(ZIP) -r $(DISTARCH).zip $(DISTARCH)/* && \
 	cd ..
