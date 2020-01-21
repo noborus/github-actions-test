@@ -3,6 +3,8 @@ GOOS=$(shell go env GOOS)
 GOARCH=$(shell go env GOARCH)
 BINARY_NAME := github-actions-test$(SUFFIX)
 DISTDIR=dist
+DISTARCH=github-actions-test_$(VERSION)_$(GOOS)_$(GOARCH)
+DISTOSDIR=$(DISTDIR)/$(DISTARCH)
 
 build:
 	go build
@@ -12,7 +14,7 @@ test:
 
 PHONY: pkg
 pkg:
-	GOOS=$(GOOS) GOARCH=$(GOARCH) go build -o $(DISTDIR)/github-actions-test_$(VERSION)_$(GOOS)_$(GOARCH)/$(BINARY_NAME)
+	GOOS=$(GOOS) GOARCH=$(GOARCH) go build -o $(DISTOSDIR)/$(BINARY_NAME)
 
 windows_pkg:
 	@$(MAKE) pkg GOOS=windows GOARCH=amd64 SUFFIX=.exe
@@ -23,11 +25,10 @@ linux_pkg:
 darwin_pkg:
 	@$(MAKE) pkg GOOS=darwin GOARCH=amd64
 
-DIST_DIRS := find * -type d -exec
 .PHONY: dist
-dist: pkg
+dist:
 	cd $(DISTDIR) && \
-	$(DIST_DIRS) cp ../LICENSE {} \; && \
-	$(DIST_DIRS) cp ../README.md {} \; && \
-	$(DIST_DIRS) zip -r {}.zip {} \; && \
+	cp ../LICENSE $(DISTARCH) && \
+	cp ../README.md $(DISTARCH) && \
+	zip -r $(DISTARCH).zip $(DISTARCH) && \
 	cd ..
