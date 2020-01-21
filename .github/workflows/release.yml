@@ -29,6 +29,8 @@ jobs:
         go-version: 1.13.x
     - name: Check out code into the Go module directory
       uses: actions/checkout@v1
+    - uses: olegtarasov/get-tag@v1
+      id: tagName
     - name: Run pkg
       env:
         GOOS: ${{ matrix.goos }}
@@ -36,7 +38,6 @@ jobs:
       run: make ${{ matrix.goos }}_pkg
     - name: Run dist
       run: make dist
-
     - name: Create release
       id: create_release
       uses: actions/create-release@v1.0.0
@@ -55,6 +56,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./dist/github-actions-test_${{ github.event.release.tag_name }}_${{ matrix.goos }}_${{ matrix.arch }}.zip
-        asset_name: github-actions-test_${{ github.event.release.tag_name }}_${{ matrix.goos }}_${{ matrix.arch }}.zip
+        asset_path: ./dist/github-actions-test_${{ steps.tagName.outputs.tag }}_${{ matrix.goos }}_${{ matrix.arch }}.zip
+        asset_name: github-actions-test_${{ steps.tagName.outputs.tag }}_${{ matrix.goos }}_${{ matrix.arch }}.zip
         asset_content_type: application/zip
