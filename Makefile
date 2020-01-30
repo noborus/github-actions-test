@@ -28,7 +28,7 @@ PHONY: pkg
 pkg:
 	-mkdir dist
 	-mkdir $(DIST_BIN)
-	$(XGOCMD) -dest dist/tmp -targets linux/amd64 .
+	$(XGOCMD) -dest dist/tmp .
 	find dist/tmp -type f -exec cp {} $(DIST_BIN) \;
 
 DIST_DIRS := find github-actions-test* -type d -exec
