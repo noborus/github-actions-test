@@ -38,6 +38,5 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url:  ${{github.event.release.upload_url}}
-        asset_path: ./dist/github-actions-test_${{github.event.release.tag_name}}_${{ matrix.goos }}_${{ matrix.arch }}.zip
-        asset_name: github-actions-test_${{github.event.release.tag_name}}_${{ matrix.goos }}_${{ matrix.arch }}.zip
+        pattern: "dist/*.zip"
         asset_content_type: application/zip
