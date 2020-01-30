@@ -28,7 +28,7 @@ pkg:
 	$(XGOCMD) -dest $(DIST_BIN) -targets linux/amd64 .
 # Problems with xgo output?
 # Copy from dist/bin/github.com/* to dist/.
-	find dist/bin/github.com -type f -exec cp {} dist/ \;
+	find dist/bin/github.com -type f -exec cp {} dist/bin \;
 
 DIST_DIRS := find github-actions-test* -type d -exec
 
