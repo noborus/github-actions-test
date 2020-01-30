@@ -9,11 +9,9 @@ else
   LDFLAGS="-X github.com/noborus/github-actions-test.Version=$(VERSION)"
 endif
 BUILDFLAG=-ldflags=$(LDFLAGS)
-XGOCMD=xgo $(BUILDFLAG)
+XGOCMD=xgo -v $(BUILDFLAG)
 DISTDIR=dist
 DIST_BIN=dist/bin
-DISTARCH=github-actions-test_$(VERSION)_$(GOOS)_$(GOARCH)
-DISTOSDIR=$(DISTDIR)/$(DISTARCH)
 
 build:
 	go build
@@ -28,6 +26,7 @@ PHONY: pkg
 pkg:
 	-mkdir dist
 	$(XGOCMD) -dest $(DIST_BIN) .
+	ls $(DIST_BIN)
 
 DIST_DIRS := find github-actions-test* -type d -exec
 
