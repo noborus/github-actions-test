@@ -6,7 +6,7 @@ BINARY_NAME := github-actions-test$(SUFFIX)
 ifeq ($(strip $(VERSION)),)
   LDFLAGS=""
 else
-  LDFLAGS="-X github.com/noborus/github-actions-test.Version=$(VERSION)"
+  LDFLAGS=""
 endif
 BUILDFLAG=-ldflags=$(LDFLAGS)
 XGOCMD=xgo -v $(BUILDFLAG)
@@ -25,13 +25,13 @@ clean:
 PHONY: pkg
 pkg:
 	-mkdir dist
-	$(XGOCMD) -dest $(DIST_BIN) .
+	$(XGOCMD) -dest $(DIST_BIN) -targets linux/amd64 .
 	ls $(DIST_BIN)
 
 DIST_DIRS := find github-actions-test* -type d -exec
 
 .PHONY: dist
-dist: pkg dist-clean linux-amd64 linux-386 linux-arm-5 linux-arm-6 linux-arm-7 linux-arm64 linux-mips linux-mips64 linux-mipsle windows-386 windows-amd64 darwin-386 darwin-amd64
+dist: pkg dist-clean linux-amd64
 	cd dist && \
 	$(DIST_DIRS) cp ../README.md {} \; && \
 	$(DIST_DIRS) cp ../LICENSE {} \; && \
