@@ -22,13 +22,14 @@ test:
 clean:
 	rm $(BINARY_NAME)
 
+# Problems with xgo output?
+# Copy from dist/tmp/github.com/* to dist/bin.
 PHONY: pkg
 pkg:
 	-mkdir dist
-	$(XGOCMD) -dest $(DIST_BIN) -targets linux/amd64 .
-# Problems with xgo output?
-# Copy from dist/bin/github.com/* to dist/.
-	find dist/bin/github.com -type f -exec cp {} dist/bin \;
+	-mkdir $(DIST_BIN)
+	$(XGOCMD) -dest dist/tmp -targets linux/amd64 .
+	find dist/tmp -type f -exec cp {} $(DIST_BIN) \;
 
 DIST_DIRS := find github-actions-test* -type d -exec
 
