@@ -26,7 +26,7 @@ PHONY: pkg
 pkg:
 	-mkdir dist
 	$(XGOCMD) -dest $(DIST_BIN) -targets linux/amd64 .
-	tree $(DIST_BIN)
+	ls -R $(DIST_BIN)
 
 DIST_DIRS := find github-actions-test* -type d -exec
 
