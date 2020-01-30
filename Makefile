@@ -26,6 +26,7 @@ clean:
 
 PHONY: pkg
 pkg:
+	-mkdir dist
 	$(XGOCMD) -dest $(DIST_BIN) .
 
 DIST_DIRS := find github-actions-test* -type d -exec
