@@ -32,7 +32,7 @@ jobs:
       run: make dist
 
     - name: Upload Asset to Release with a wildcard
-      uses: radiusnetworks/release-asset-action@v1
+      uses: AButler/upload-release-assets@v2.0
       with:
-        pattern: "dist/*.zip"
+        files: "dist/*.zip"
         github-token: ${{ secrets.GITHUB_TOKEN }}
