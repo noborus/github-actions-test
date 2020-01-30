@@ -34,7 +34,7 @@ pkg:
 DIST_DIRS := find github-actions-test* -type d -exec
 
 .PHONY: dist
-dist: pkg dist-clean linux-amd64
+dist: dist-clean pkg linux-amd64 linux-386 linux-arm-5 linux-arm-6 linux-arm-7 linux-arm64 linux-mips linux-mips64 linux-mipsle windows-386 windows-amd64 darwin-386 darwin-amd64
 	cd dist && \
 	$(DIST_DIRS) cp ../README.md {} \; && \
 	$(DIST_DIRS) cp ../LICENSE {} \; && \
