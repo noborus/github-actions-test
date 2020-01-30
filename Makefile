@@ -6,10 +6,10 @@ BINARY_NAME := github-actions-test$(SUFFIX)
 ifeq ($(strip $(VERSION)),)
   LDFLAGS=""
 else
-  LDFLAGS=""
+  LDFLAGS="-X github.com/noborus/github-actions-test.Version=$(VERSION)"
 endif
 BUILDFLAG=-ldflags=$(LDFLAGS)
-XGOCMD=xgo -v $(BUILDFLAG)
+XGOCMD=xgo $(BUILDFLAG)
 DISTDIR=dist
 DIST_BIN=dist/bin
 
@@ -26,7 +26,9 @@ PHONY: pkg
 pkg:
 	-mkdir dist
 	$(XGOCMD) -dest $(DIST_BIN) -targets linux/amd64 .
-	ls -R $(DIST_BIN)
+# Problems with xgo output?
+# Copy from dist/bin/github.com/* to dist/.
+	find dist/bin/github.com -type f -exec cp {} dist/ \;
 
 DIST_DIRS := find github-actions-test* -type d -exec
 
