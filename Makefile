@@ -9,7 +9,7 @@ else
   LDFLAGS="-X github.com/noborus/github-actions-test.Version=$(VERSION)"
 endif
 BUILDFLAG=-ldflags=$(LDFLAGS)
-XGOCMD=xgo $(BUILDFLAG)
+XGOCMD=xgo -go 1.13.x $(BUILDFLAG)
 DISTDIR=dist
 DIST_BIN=dist/bin
 
