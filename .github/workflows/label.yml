@@ -13,5 +13,5 @@ jobs:
               issue_number: context.payload.pull_request.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              labels：['レビュー待ち'] 
+              labels: ['レビュー待ち'] 
             })
