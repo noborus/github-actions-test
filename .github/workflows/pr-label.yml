@@ -6,7 +6,7 @@ jobs:
     steps:
       - name: Add label
         uses: actions/github-script@v3
-        if: success() && contains(github.event.pull_request.labels.length == 0)
+        if: success() && github.event.pull_request.labels.length == 0
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
