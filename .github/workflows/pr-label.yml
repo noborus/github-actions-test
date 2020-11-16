@@ -1,12 +1,12 @@
 on: pull_request
 
 jobs:
-  comment:
+  label:
     runs-on: ubuntu-latest
     steps:
       - name: Add label
         uses: actions/github-script@v3
-        if: success() && github.event.pull_request.labels.length == 0
+        if: success() && github.event.pull_request.labels == null
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
