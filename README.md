@@ -1,4 +1,4 @@
 # github-actions-test
 
-test
+test2
 update
