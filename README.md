@@ -1,2 +1,2 @@
 # github-actions-test
-test
+test2
