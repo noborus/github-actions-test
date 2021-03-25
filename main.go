@@ -4,9 +4,15 @@ import (
 	"database/sql"
 	"fmt"
 	"log"
+	"os/exec"
 
 	_ "github.com/mattn/go-sqlite3"
 )
+
+func execCommand() ([]byte, error) {
+	cmd := exec.Command("go", "version")
+	return cmd.Output()
+}
 
 func hello() string {
 	db, err := sql.Open("sqlite3", "")
@@ -32,5 +38,10 @@ func hello() string {
 }
 
 func main() {
+	v, err := execCommand()
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(string(v))
 	fmt.Println(hello())
 }
