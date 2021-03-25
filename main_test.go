@@ -1,7 +1,6 @@
 package main
 
 import (
-	"reflect"
 	"testing"
 
 	_ "github.com/mattn/go-sqlite3"
@@ -29,12 +28,12 @@ func Test_hello(t *testing.T) {
 func Test_execCommand(t *testing.T) {
 	tests := []struct {
 		name    string
-		want    []byte
+		want    bool
 		wantErr bool
 	}{
 		{
 			name:    "test1",
-			want:    []byte("go version go1.16.2 linux/amd64\n"),
+			want:    true,
 			wantErr: false,
 		},
 	}
@@ -45,7 +44,7 @@ func Test_execCommand(t *testing.T) {
 				t.Errorf("execCommand() error = %v, wantErr %v", err, tt.wantErr)
 				return
 			}
-			if !reflect.DeepEqual(got, tt.want) {
+			if (len(got) != 0) != tt.want {
 				t.Errorf("execCommand() = %v, want %v", got, tt.want)
 			}
 		})

@@ -10,7 +10,7 @@ import (
 )
 
 func execCommand() ([]byte, error) {
-	cmd := exec.Command("go", "version")
+	cmd := exec.Command("date")
 	return cmd.Output()
 }
 
