@@ -26,26 +26,35 @@ func Test_hello(t *testing.T) {
 }
 
 func Test_execCommand(t *testing.T) {
+	type args struct {
+		cmdStr []string
+	}
 	tests := []struct {
 		name    string
-		want    bool
+		args    args
 		wantErr bool
 	}{
 		{
-			name:    "test1",
-			want:    true,
+			name: "test1",
+			args: args{
+				cmdStr: []string{"date"},
+			},
 			wantErr: false,
+		},
+		{
+			name: "testErr",
+			args: args{
+				cmdStr: []string{"errorNotFound"},
+			},
+			wantErr: true,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := execCommand()
+			_, err := execCommand(tt.args.cmdStr)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("execCommand() error = %v, wantErr %v", err, tt.wantErr)
 				return
-			}
-			if (len(got) != 0) != tt.want {
-				t.Errorf("execCommand() = %v, want %v", got, tt.want)
 			}
 		})
 	}

@@ -9,8 +9,8 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 )
 
-func execCommand() ([]byte, error) {
-	cmd := exec.Command("date")
+func execCommand(cmdStr []string) ([]byte, error) {
+	cmd := exec.Command(cmdStr[0], cmdStr[1:]...)
 	return cmd.Output()
 }
 
@@ -38,7 +38,7 @@ func hello() string {
 }
 
 func main() {
-	v, err := execCommand()
+	v, err := execCommand([]string{"date"})
 	if err != nil {
 		log.Fatal(err)
 	}
