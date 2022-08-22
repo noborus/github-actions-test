@@ -1,12 +1,42 @@
 body:
-- attributes:
-    description: Also tell us, what did you expect to happen?
-    label: What happened?
-    placeholder: Tell us what you see!
-    value: A bug happened!
-  id: what-happened
-  type: textarea
+name: 機能リクエスト
+description: 機能リクエストの提案
+- type: dropdown
+  id: importance
+  attributes:
+    description: 貢献者としてマニュアルに記載を希望しない方は記載不可としてください。[記載例](https://www.postgresql.jp/document/current/html/jpug-doc.html)
+    label: 貢献者として記載可否
+    options:
+    - 高
+    - 中
+    - 低
   validations:
     required: true
-description: 機能リクエストの提案
-name: 機能リクエスト
+- type: textarea
+  id: what-happened
+  attributes:
+    label: 問題点
+    placeholder: ここに問題点を記載してください
+  validations:
+    required: true
+- type: textarea
+  id: background
+  attributes:
+    label: 背景
+    placeholder: 報告の理由、根拠を書いてください
+  validations:
+    required: false
+- type: textarea
+  id: solution
+  attributes:
+    label: 解決方法
+    placeholder: 解決方法を書いてください
+  validations:
+    required: false
+- type: textarea
+  id: note
+  attributes:
+    label: 注意点
+    placeholder: 注意点、懸念事項を書いてください
+  validations:
+    required: false
