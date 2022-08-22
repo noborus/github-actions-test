@@ -1,6 +1,6 @@
-body:
 name: 機能リクエスト
 description: 機能リクエストの提案
+body:
 - type: dropdown
   id: importance
   attributes:
