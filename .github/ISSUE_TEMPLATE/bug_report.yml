@@ -10,7 +10,7 @@ body:
   id: can-be-written
   attributes:
     description: 貢献者としてマニュアルに記載を希望しない方は記載不可としてください。
-    lebel: 貢献者として記載可否
+    label: 貢献者として記載可否
     options:
     - label: 記載可
     - label: 記載不可
