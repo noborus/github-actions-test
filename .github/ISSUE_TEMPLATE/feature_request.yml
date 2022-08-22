@@ -1,8 +1,5 @@
 name: 機能リクエスト
-about: 機能リクエストの提案
-title: ''
-labels: ''
-assignees: ''
+description: 機能リクエストの提案
 body:
   - type: markdown
       attributes:
