@@ -1,12 +1,12 @@
----
 name: 機能リクエスト
 about: 機能リクエストの提案
 title: ''
 labels: ''
 assignees: ''
-
----
-
+body:
+  - type: markdown
+      attributes:
+        value: |
 ## 重要度: （中）（高/中/低から選んでください）
 
 ## 問題点
