@@ -6,6 +6,9 @@ body:
   attributes:
     description: （分れば）sgmlファイル名またはhtmlファイル名と問題箇所を書いてください。修正案があれば、それも書いてください。
     label: 問題の詳細
+    placeholder: tutorial-createdb.html にダースベースの作成となっています。データベースの誤りです。
+ validations:
+    required: true
 - type: dropdown
   id: can-be-written
   attributes:
