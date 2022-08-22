@@ -1,24 +1,12 @@
-name: 機能リクエスト
-description: 機能リクエストの提案
 body:
-  - type: markdown
-      attributes:
-        value: |
-## 重要度: （中）（高/中/低から選んでください）
-
-## 問題点
-
-（ここに問題点を記載してください）
-（↓以下は無ければ省略して構いません）
-
-## 背景
-
-（報告の理由、根拠を書いてください）
-
-## 解決方法
-
-（解決方法を書いてください）
-
-## 注意点
-
-（注意点、懸念事項を書いてください）
+- attributes:
+    description: Also tell us, what did you expect to happen?
+    label: What happened?
+    placeholder: Tell us what you see!
+    value: A bug happened!
+  id: what-happened
+  type: textarea
+  validations:
+    required: true
+description: 機能リクエストの提案
+name: 機能リクエスト

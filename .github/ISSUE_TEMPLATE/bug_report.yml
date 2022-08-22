@@ -1,25 +1,24 @@
 name: 誤字、脱字、誤訳報告
 description: 誤字、脱字、誤訳等を報告
 body:
-- type: textarea
-    attributes:
-      label: 問題の詳細
-      description: （分れば）sgmlファイル名またはhtmlファイル名と問題箇所を書いてください。
-         修正案があれば、それも書いてください。
-    validations:
-      required: true
-- type: checkboxes
-    attributes:
-      lebel: 貢献者として記載可否
-      description: 貢献者としてマニュアルに記載を希望しない方は記載不可としてください。
-      options:
-      - label: 記載可
-      - label: 記載不可
-- type: input
-    id: notation_name
-    attributes:
-      label: [https://github.com/pgsql-jp/jpug-doc/wiki/%E8%B2%A2%E7%8C%AE%E8%80%85%E8%A8%98%E8%BC%89%E5%9F%BA%E6%BA%96](貢献者)
-      description: 貢献者として記載する表記名を書いてください。
-      placeholder: 株式会社ポストグレス　翻訳太郎
-    validations:
-      required: false
+- attributes:
+    description: sgmlファイル名またはhtmlファイル名と問題箇所を書いてください。修正案があれば、それも書いてください。
+    label: 問題の詳細
+  type: textarea
+  validations:
+    required: true
+- attributes:
+    description: 貢献者としてマニュアルに記載を希望しない方は記載不可としてください。
+    lebel: 貢献者として記載可否
+    options:
+    - label: 記載可
+    - label: 記載不可
+  type: checkboxes
+- attributes:
+    description: 貢献者として記載する表記名を書いてください。
+    label: 貢献者
+    placeholder: 株式会社ポストグレス　翻訳太郎
+  id: notation_name
+  type: input
+  validations:
+    required: false
