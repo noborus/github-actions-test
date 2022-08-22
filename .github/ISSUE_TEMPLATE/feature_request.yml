@@ -1,5 +1,5 @@
-name: 機能リクエスト
-description: 機能リクエストの提案
+name: 問題報告、要望提案
+description: その他問題の報告、要望提案
 body:
 - type: dropdown
   id: importance
@@ -39,3 +39,22 @@ body:
     placeholder: 注意点、懸念事項を書いてください
   validations:
     required: false
+- type: dropdown
+  id: can-be-written
+  attributes:
+    description: 貢献者としてマニュアルに記載を希望しない方は記載不可としてください。[記載例](https://www.postgresql.jp/document/current/html/jpug-doc.html)
+    label: 貢献者として記載可否
+    options:
+    - 記載（貢献者欄に書いてください）
+    - 記載不可
+    - 以前の記載名を使用
+  validations:
+    required: true
+- type: input
+  id: notation_name
+  validations:
+    required: false
+  attributes:
+    description: 貢献者として記載する表記名を書いてください。
+    label: 貢献者名
+    placeholder: 株式会社ポストグレス　翻訳太郎
