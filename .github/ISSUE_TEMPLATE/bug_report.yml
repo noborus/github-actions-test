@@ -5,9 +5,7 @@ body:
   id: what-happened
   attributes:
     description: sgmlファイル名またはhtmlファイル名と問題箇所を書いてください。修正案があれば、それも書いてください。
-    value: 問題の詳細
-  validations:
-    required: true
+    label: 問題の詳細
 - type: checkboxes
   id: can-be-written
   attributes:
