@@ -4,8 +4,7 @@ body:
 - type: dropdown
   id: importance
   attributes:
-    description: 貢献者としてマニュアルに記載を希望しない方は記載不可としてください。[記載例](https://www.postgresql.jp/document/current/html/jpug-doc.html)
-    label: 貢献者として記載可否
+    label: 重要度
     options:
     - 高
     - 中
