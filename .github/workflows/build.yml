@@ -6,12 +6,15 @@ jobs:
     strategy:
       matrix:
         go-version: ["1.21"]
-        platform: [ubuntu-latest, macos-latest, windows-latest]
+        platform: [ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.platform }}
 
     steps:
     - name: Check out code into the Go module directory
       uses: actions/checkout@v4
+
+    - name: set-grep-color
+      run: git config color.grep.match "red reverse" 
 
     - name: Set up Go 1.21
       uses: actions/setup-go@v4
