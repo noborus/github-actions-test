@@ -18,6 +18,7 @@ build:
 
 test:
 	go test -v
+	git grep --color=always "。\s\+$" *
 
 clean:
 	rm $(BINARY_NAME)
