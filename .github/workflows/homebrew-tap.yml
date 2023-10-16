@@ -32,4 +32,4 @@ jobs:
           tap: noborus/homebrew-tap
           # Formula name, required
           formula: github-actions-test
-          tag: ${{ github.event.inputs.version }}
+          tag: ${{ steps.sets-a-secret.outputs.tag-name }}
