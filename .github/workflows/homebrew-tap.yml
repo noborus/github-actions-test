@@ -21,7 +21,7 @@ jobs:
         id: extract-version
         # Strip a string prefix from the git tag name:
         run: |
-          printf "::set-output name=%s::%s\n" tag-name "${GITHUB_REF#refs/tags/}"
+          echo "tag-name=v0.1.4" >> $GITHUB_OUTPUT
       - uses: mislav/bump-homebrew-formula-action@v3
         with:
           download-url: https://github.com/noborus/github-actions-test/releases/download/${{ steps.extract-version.outputs.tag-name }}/github-actions-test-${{ steps.extract-version.outputs.tag-name }}.tar.gz
