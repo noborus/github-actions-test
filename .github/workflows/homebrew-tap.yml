@@ -21,15 +21,11 @@ jobs:
         id: extract-version
         # Strip a string prefix from the git tag name:
         run: |
-          if [[ "${GITHUB_REF}" == "refs/tags/"* ]]; then
-            echo "tag-name=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
-          else
-            echo "Error: GITHUB_REF is not a tag" >&2
-          exit 1
-          fi
+          printf "::set-output name=%s::%s\n" tag-name "${GITHUB_REF#refs/tags/}"
       - uses: mislav/bump-homebrew-formula-action@v3
         with:
-          # formula-name: github-actions-test
+          download-url: https://github.com/noborus/github-actions-test/releases/download/${{ steps.extract-version.outputs.tag-name }}/github-actions-test-${{ steps.extract-version.outputs.tag-name }}.tar.gz
+          formula-name: github-actions-test
           homebrew-tap: noborus/homebrew-tap
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
