@@ -8,8 +8,9 @@ ifeq ($(strip $(VERSION)),)
 else
   LDFLAGS="-X github.com/noborus/github-actions-test.Version=$(VERSION)"
 endif
+GOVERSION ?= "1.21.x"
 BUILDFLAG=-ldflags=$(LDFLAGS)
-XGOCMD=xgo -go 1.13.x $(BUILDFLAG)
+XGOCMD=xgo -go $(GOVERSION) $(BUILDFLAG)
 DISTDIR=dist
 DIST_BIN=dist/bin
 
