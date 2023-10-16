@@ -36,7 +36,7 @@ pkg:
 DIST_DIRS := find github-actions-test* -type d -exec
 
 .PHONY: dist
-dist: dist-clean pkg linux-amd64 linux-386 linux-arm-5 linux-arm-6 linux-arm-7 linux-arm64 linux-mips linux-mips64 linux-mipsle windows-386 windows-amd64 darwin-386 darwin-amd64
+dist: dist-clean pkg linux-amd64 linux-386 linux-arm-5 linux-arm-6 linux-arm-7 linux-arm64 linux-mips linux-mips64 linux-mipsle windows-386 windows-amd64 darwin-amd64 darwin-arm64
 	cd dist && \
 	$(DIST_DIRS) cp ../README.md {} \; && \
 	$(DIST_DIRS) cp ../LICENSE {} \; && \
@@ -81,19 +81,19 @@ linux-mipsle:
 
 windows-386:
 	mkdir dist/$(BINARY_NAME)_$(VERSION)_windows_386
-	cp $(DIST_BIN)/$(BINARY_NAME)-windows-4.0-386.exe dist/$(BINARY_NAME)_$(VERSION)_windows_386/$(BINARY_NAME).exe
+	cp $(DIST_BIN)/$(BINARY_NAME)-windows-386.exe dist/$(BINARY_NAME)_$(VERSION)_windows_386/$(BINARY_NAME).exe
 
 windows-amd64:
 	mkdir dist/$(BINARY_NAME)_$(VERSION)_windows_amd64
-	cp $(DIST_BIN)/$(BINARY_NAME)-windows-4.0-amd64.exe dist/$(BINARY_NAME)_$(VERSION)_windows_amd64/$(BINARY_NAME).exe
-
-darwin-386:
-	mkdir dist/$(BINARY_NAME)_$(VERSION)_darwin_386
-	cp $(DIST_BIN)/$(BINARY_NAME)-darwin-10.6-386 dist/$(BINARY_NAME)_$(VERSION)_darwin_386/$(BINARY_NAME)
+	cp $(DIST_BIN)/$(BINARY_NAME)-windows-amd64.exe dist/$(BINARY_NAME)_$(VERSION)_windows_amd64/$(BINARY_NAME).exe
 
 darwin-amd64:
 	mkdir dist/$(BINARY_NAME)_$(VERSION)_darwin_amd64
-	cp $(DIST_BIN)/$(BINARY_NAME)-darwin-10.6-amd64 dist/$(BINARY_NAME)_$(VERSION)_darwin_amd64/$(BINARY_NAME)
+	cp $(DIST_BIN)/$(BINARY_NAME)-darwin-amd64 dist/$(BINARY_NAME)_$(VERSION)_darwin_amd64/$(BINARY_NAME)
+
+darwin-arm64:
+	mkdir dist/$(BINARY_NAME)_$(VERSION)_darwin_arm64
+	cp $(DIST_BIN)/$(BINARY_NAME)-darwin-arm64 dist/$(BINARY_NAME)_$(VERSION)_darwin_arm64/$(BINARY_NAME)
 
 dist-clean:
 	rm -Rf dist/github-actions-test*
