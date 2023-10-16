@@ -15,7 +15,6 @@ jobs:
       uses: actions/setup-go@v4
       with:
         go-version: "1.21"
-
     - name: Set environment variables
       shell: bash
       run: |
@@ -30,4 +29,17 @@ jobs:
       if: startsWith(github.ref, 'refs/tags/')
       with:
         files: dist/*.zip
-
+    - name: update homebrew
+      run: |
+          bash .github/update-homebrew-tap.sh
+    - name: Push formula to homebrew tap
+      if: startsWith(github.ref, 'refs/tags/')
+      run: |
+        git config --global user.email "noborusai@gmail.com"
+        git config --global user.name "Noboru Saito"
+        git clone https://github.com/noborus/homebrew-tap.git
+        cd homebrew-tap
+        cp ../.github/github-actions-test.rb .
+        git add github-actions-test.rb
+        git commit -m "Brew formula update for github-actions-test"
+        git push origin main
