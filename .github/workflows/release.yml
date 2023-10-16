@@ -39,6 +39,7 @@ jobs:
       with:
         source_file: '.github/github-actions-test.rb'
         destination_repo: 'noborus/homebrew-tap'
+        destination_branch: 'master'
         user_email: 'noborusai@gmail.com'
         user_name: 'Noboru Saito'
         commit_message: 'Brew formula update for github-actions-test'
