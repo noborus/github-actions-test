@@ -5,4 +5,4 @@ test
 再テスト
 再々テスト
 再々々テスト
-pr-label-test2-2
+pr-label-test2-3
