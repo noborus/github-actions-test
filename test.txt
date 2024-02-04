@@ -6,4 +6,4 @@ test
 再々テスト
 再々々テスト
 pr-labelテスト
-pr-label re-reviewテスト
+pr-label re-reviewテスト2
