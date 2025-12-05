@@ -29,6 +29,6 @@ jobs:
 
       - name: Create PR
         env:
-          GITHUB_TOKEN: ${{ steps.generate.outputs.token }}
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
           gh pr create --base "main" --title "Test" --body "Test"

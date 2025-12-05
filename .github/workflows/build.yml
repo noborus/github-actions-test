@@ -5,19 +5,19 @@ jobs:
   build:
     strategy:
       matrix:
-        go-version: ["1.21"]
+        go-version: ["stable"]
         platform: [ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.platform }}
 
     steps:
     - name: Check out code into the Go module directory
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
 
     - name: set-grep-color
-      run: git config --global color.grep.match "black red" 
+      run: git config --global color.grep.match "black red"
 
-    - name: Set up Go 1.21
-      uses: actions/setup-go@v4
+    - name: Set up Go stable
+      uses: actions/setup-go@v6
       with:
         go-version: ${{ matrix.go-version }}
       id: go
