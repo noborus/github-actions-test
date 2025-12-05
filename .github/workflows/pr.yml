@@ -31,4 +31,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
         run: |
-          gh pr create --base "main" --title "Test" --body "Test"
+          gh pr create --base "master" --title "Test" --body "Test"
